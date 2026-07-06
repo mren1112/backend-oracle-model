@@ -1,0 +1,27 @@
+version: "3.4"
+services:
+  e-testing-api:
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: e-testing-api:0.0.1
+    # volumes:
+    #   - ./uploads:/usr/src/app/uploads
+    env_file:
+      - .env
+    ports:
+      - 4888:4888
+    networks:
+      e-testing-api:
+    environment:
+      NODE_ENV: production
+      TZ: Asia/Bangkok
+
+networks:
+  e-testing-api:
+    name: e-testing-api
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 192.168.3.1/26
